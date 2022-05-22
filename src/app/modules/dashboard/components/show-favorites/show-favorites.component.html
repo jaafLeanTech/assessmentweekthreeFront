@@ -1,0 +1,34 @@
+<div>
+  <h2>My Favorites Show</h2>
+  <div *ngFor="let favoriteShow of showsListFavorites; let i = index">
+    <div>
+      <img src="{{favoriteShow.poster}}" alt="">
+    </div>
+    <div>
+      <div>
+        <span >Title: </span>
+        {{ favoriteShow.title }}
+      </div>
+      <div>
+        <span >Type: </span>
+        {{ favoriteShow.type }}
+      </div>
+      <div>
+        <span >Year: </span>
+        {{ favoriteShow.year }}
+      </div>
+      <div>
+        <span >Comments: </span>
+        {{ favoriteShow.comments }}
+      </div>
+      <div>
+        <span >Registration Date: </span>
+        {{ favoriteShow.addToFavoriteDate | date: 'H:mm:ss' }}
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="deleteFavorites(i)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,20 @@
+<form [formGroup]="searchForm">
+  <div class="form" >
+    <mat-form-field class="form__select-show" appearance="fill">
+      <mat-label>Select show type</mat-label>
+      <mat-select formControlName="showType">
+        <mat-option *ngFor = "let select of selectType" [value]="select.value" (click)="enableDisable()">{{select.viewValue | titlecase}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form__show-name" appearance="fill">
+      <mat-label>{{ 'Search' | modifyText: searchForm.controls['showType'].value}}</mat-label>
+      <input matInput formControlName="showName">
+    </mat-form-field>
+    <mat-form-field class="form__show-year" appearance="fill">
+      <mat-label>Show Year</mat-label>
+      <input matInput formControlName="showYear" appYearFormat>
+    </mat-form-field>
+    <button mat-flat-button color="warn" (click)="searchShow()" [disabled]="!searchForm.valid" >Search Show</button>
+  </div>
+</form>
+

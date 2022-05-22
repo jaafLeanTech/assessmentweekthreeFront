@@ -1,0 +1,39 @@
+<form [formGroup]="showResults">
+  <h3>Search Results</h3>
+    <div formArrayName="viewArray" *ngFor="let show of getShowResults.controls; let i = index">
+      <div [formGroupName] = "i" class="container">
+        <img src="{{showResultsList[i].poster}}" alt="">
+          <div>
+            <mat-form-field appearance="legacy">
+              <mat-label>Show Title</mat-label>
+              <input matInput formControlName="showTitle"/>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Type</mat-label>
+              <input matInput formControlName="showType"/>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="legacy">
+              <mat-label>Launch Year</mat-label>
+              <input matInput formControlName="showYear"/>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="legacy">
+              <mat-label>Comments Added</mat-label>
+              <textarea matInput formControlName="comments"></textarea>
+            </mat-form-field>
+          </div>
+          <div>
+              <button mat-raised-button
+              color="{{!showResultsList[i].selected ? 'accent' : 'warn'}}" (click)="addFavorites(i)">
+              {{!showResultsList[i].selected ? 'Favorite' : 'Added to Favorites'}}
+              </button>
+          </div>
+      </div>
+    </div>
+</form>
+
